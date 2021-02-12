@@ -4,6 +4,35 @@ import smtplib
 from email.message import EmailMessage
 import getpass
 import time
+import sys
+import argparse
+import string
+
+data_url = 'https://www.cvs.com/immunizations/covid-19-vaccine.vaccine-status.{state}.json?vaccineinfo'
+
+parser = argparse.ArgumentParser(description='Get notified whenever a city you follow has available covid vaccines')
+
+parser.add_argument('--list-states', action='store_true', dest='list_states')
+parser.add_argument('--list-cities', type=str, dest='list_cities', help='List all cities, requires argument `state`')
+
+args = parser.parse_args(sys.argv[1:])
+
+if args.list_cities:
+    res = requests.get(data_url.format(state=args.list_cities))
+    data = json.loads(res.text)
+    data = data['responsePayloadData']['data'][args.list_cities]
+
+    for obj in data:
+        print(string.capwords(obj['city']))
+    sys.exit(0)
+
+if args.list_states:
+    res = requests.get('https://www.cvs.com/immunizations/covid-19-vaccine.vaccine-status.json?vaccineinfo')
+    data = json.loads(res.text)
+    for key in data['responsePayloadData']['data']:
+        print(key)
+    sys.exit(0)
+
 
 EMAIL_ADDRESS = input('Please provide your email: ')
 EMAIL_PASSWORD = getpass.getpass('Enter your password (If you have 2fa enabled provide your token): ')
@@ -24,11 +53,11 @@ interval = int(input('How often would you like to send requests? (in seconds!): 
 print('Alright! It is now running press <ctrl> + <c> to exit.')
 
 while True:
-    res = requests.get(f'https://www.cvs.com/immunizations/covid-19-vaccine.vaccine-status.{state}.json?vaccineinfo')
+    res = requests.get(data_url.format(state=argparse.list_cities))
 
     data = json.loads(res.text)
 
-    data = data['responsePayloadData']['data']['CA']
+    data = data['responsePayloadData']['data'][state]
 
     for obj in data:
         if obj['city'] in cities and obj['status'] == 'Available':
