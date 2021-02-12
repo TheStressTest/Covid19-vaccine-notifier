@@ -27,3 +27,6 @@ Now if you ever want to quit type <kbd>Ctrl</kbd> + <kbd>c</kbd> while in the te
   - If you have 2FA enabled you have to provide an account token instead of your password.
 - Are you on windows and getting an erorr like `No module named pip` when you try to install requests?
   - Try running `python -m ensurepip` then installing requests again.
+
+### Disclaimer
+This is a use at your own risk program. CVS Doesn't explicitly say you can do this.
