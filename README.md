@@ -18,8 +18,24 @@ py -3 main.py
 python3 main.py
 ```
 Thats it! You can just let it run in the background and it will email you whenever a city has available vaccinations.
-
 Now if you ever want to quit type <kbd>Ctrl</kbd> + <kbd>c</kbd> while in the terminal.
+
+### A few more things to note:
+If you would like to see a list of states available run:
+```sh
+# Windows:
+py -3 main.py --show-states
+# MacOS & Linux:
+py -3 main.py --show-states
+```
+If you would like to see all available & valid cities run:
+```sh
+# Windows:
+py -3 main.py --show-cities [state]
+# MacOS & Linux:
+py -3 main.py --show-cities [state]
+```
+
 
 ## Trouble shooting:
 - Getting an error saying that password authentication failed even though you typed in the correct password?
