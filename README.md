@@ -24,16 +24,16 @@ Now if you ever want to quit type <kbd>Ctrl</kbd> + <kbd>c</kbd> while in the te
 If you would like to see a list of states available run:
 ```sh
 # Windows:
-py -3 main.py --show-states
+py -3 main.py --list-states
 # MacOS & Linux:
-py -3 main.py --show-states
+py -3 main.py --list-states
 ```
 If you would like to see all available & valid cities run:
 ```sh
 # Windows:
-py -3 main.py --show-cities [state]
+py -3 main.py --list-cities [state]
 # MacOS & Linux:
-py -3 main.py --show-cities [state]
+py -3 main.py --list-cities [state]
 ```
 
 
