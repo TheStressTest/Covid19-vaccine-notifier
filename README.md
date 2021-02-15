@@ -1,4 +1,4 @@
-# Covid 19 vaccine notifier 💉
+# Covid 19 vaccine notifier (No longer works!) 💉
 This script will email you whenever a city you provide has any available vaccines.
 
 ## Setup:
